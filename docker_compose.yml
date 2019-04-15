@@ -1,0 +1,19 @@
+version:  '3.4'
+services:
+  myqaservices:
+         image: jboss:latest 
+         deploy:
+             replicas: 2
+         ports:
+            - 8083:8080
+         volumes:
+            - /var/lib/docker/volumes/vol1/:/var/
+         environment:
+             MYSTACK: qa
+         healthcheck:
+             test:
+               - CMD
+               - curl localhost:8083
+             interval: 10s
+             timeout: 5s
+             start_period: 60s

@@ -1,0 +1,20 @@
+version:  '3.4'
+services:
+  myservices:
+         image: img
+         deploy:
+             replicas: r1
+         ports:
+                 - hp:cp
+         volumes:
+            - /var/lib/docker/volumes/vol1/:/var/
+         environment:
+             MYSTACK: ms
+         healthcheck:
+             test:
+               - CMD
+               - curl localhost:hp
+             interval: 10s
+             timeout: 5s
+             start_period: 60s
+
