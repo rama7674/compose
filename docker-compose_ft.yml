@@ -5,7 +5,7 @@ services:
          deploy:
              replicas: r1
          ports:
-                 - hp:cp
+                 - 8084:8080
          volumes:
             - /var/lib/docker/volumes/vol1/:/var/
          environment:
@@ -13,7 +13,7 @@ services:
          healthcheck:
              test:
                - CMD
-               - curl localhost:hp
+               - curl localhost:8084
              interval: 10s
              timeout: 5s
              start_period: 60s
