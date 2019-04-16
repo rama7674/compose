@@ -21,7 +21,7 @@ pipeline{
                     
                     
                     
-                    sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
@@ -37,7 +37,7 @@ pipeline{
                    
                  
                     
-                    sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
