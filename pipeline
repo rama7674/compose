@@ -18,7 +18,7 @@ pipeline{
               
     
               steps{
-                    sh  ' rm -rf * '
+                    
                     sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  'chmod +x script.sh '
