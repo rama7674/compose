@@ -20,7 +20,8 @@ pipeline{
               steps{
                     sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
-                   
+                    sh  'chmod +x script.sh
+                    sh  ' ./script.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
                     sh  ' docker stack deploy -c docker-compose_ft.yml mydevstack '
