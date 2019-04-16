@@ -23,7 +23,7 @@ pipeline{
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
-                    sh  ' docker stack -c docker-compose_ft.yml mydevstack '
+                    sh  ' docker stack deploy -c docker-compose_ft.yml mydevstack '
               }
          }
          stage('qa'){
@@ -37,7 +37,7 @@ pipeline{
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
-                    sh  ' docker stack -c docker-compose_ft.yml myqastack '
+                    sh  ' docker stack deploy -c docker-compose_ft.yml myqastack '
               }
          }
       }
