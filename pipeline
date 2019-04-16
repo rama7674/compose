@@ -18,7 +18,7 @@ pipeline{
               
     
               steps{
-                    sh 'rm -rf *'
+                    
                     sh  ' git clone https://github.com/rama7674/compose.git '
                     
                     sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
@@ -34,7 +34,7 @@ pipeline{
                  environment name: 'enironment', value:'qa'
                  }
               steps{
-                    sh 'rm -rf *'
+                   
                     sh  ' git clone https://github.com/rama7674/compose.git '
                     
                     sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
