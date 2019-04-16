@@ -20,7 +20,6 @@ pipeline{
               steps{
                     
                     sh  ' git clone https://github.com/rama7674/compose '
-                    sh  ' cd compose'
                     sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
@@ -36,7 +35,6 @@ pipeline{
               steps{
                     
                     sh  ' git clone https://github.com/rama7674/compose '
-                     sh  ' cd compose'
                     sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
