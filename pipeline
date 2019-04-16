@@ -2,10 +2,10 @@ pipeline{
       agent none 
       parameters{
              choice( name:'environment', choices:['dev','qa'], description:'pick a env to deploy' )
-             string( name:'r1' defaultvalue:'1',description:'choose the replicas?' )
-             string( name:'img' defaultvalue:'jboss:latest',description:'choose the replicas?' )
-             string( name:'myservices' defaultvalue:'mydevservices',description:'choose the replicas?' )
-             string( name:'ms' defaultvalue:'qa',description:'choose the replicas?' )
+             string( name:'r1' defaultvalue:'1' )
+             string( name:'img' defaultvalue:'jboss:latest' )
+             string( name:'myservices' defaultvalue:'mydevservices' )
+             string( name:'ms' defaultvalue:'qa' )
              choice( name:'image name', choices:[script to list the images], description:'pip' )
       }
       stages{
