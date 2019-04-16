@@ -2,25 +2,28 @@ pipeline{
       agent none 
       parameters{
              choice( name:'environment', choices:['dev','qa'], description:'pick a env to deploy' )
-             string( name:'r1' defaultvalue:'1' )
-             string( name:'img' defaultvalue:'jboss:latest' )
-             string( name:'myservices' defaultvalue:'mydevservices' )
-             string( name:'ms' defaultvalue:'qa' )
-             choice( name:'image name', choices:[script to list the images], description:'pip' )
+             string( name:'r1', defaultValue:'1' , description: '')
+             string( name:'img', defaultValue:'jboss:latest', description: '' )
+             string( name:'myservices', defaultValue:'mydevservices' , description: '')
+             choice( name:'ms', choices:['dev','qa'], description: 'pick any ' )
+             
       }
+      
       stages{
          stage('dev'){
              agent{ label'dockergroup' }
               when{
-                 environment name: 'enironment', value:'dev'
-                 }
+                 environment name: 'environment', value:'dev'
+              }
+              
+    
               steps{
                     sh  ' git clone https://github.com/rama7674/compose '
                     sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
-                    sh  ' docker stack -c docker-compose_ft.yml mystack '
+                    sh  ' docker stack -c docker-compose_ft.yml mydevstack '
               }
          }
          stage('qa'){
@@ -34,7 +37,7 @@ pipeline{
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
-                    sh  ' docker stack -c docker-compose_ft.yml mystack '
+                    sh  ' docker stack -c docker-compose_ft.yml myqastack '
               }
          }
       }
