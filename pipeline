@@ -25,13 +25,13 @@ pipeline{
                     sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
-                    sh  ' docker stack deploy -c docker-compose_ft.yml mydevstack '
+                    sh  ' docker stack deploy -c docker_compose.yml mydevstack '
               }
          }
          stage('qa'){
              agent{ label'dockergroup' }
               when{
-                 environment name: 'enironment', value:'qa'
+                 environment name: 'envvironment', value:"qa"
                  }
               steps{
                    
