@@ -13,7 +13,7 @@ pipeline{
          stage('dev'){
              agent{ label'dockergroup' }
               when{
-                 environment name: 'environment', value:'dev'
+                 environment name: 'environment', value:"${params.environment}"
               }
               
     
