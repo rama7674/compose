@@ -1,23 +1,37 @@
 pipeline{
       agent none 
       parameters{
-             choice( name:'environment', choices:['dev','ft','regt'], description:'pick a env to deploy' )
+             choice( name:'environment', choices:['dev','qa'], description:'pick a env to deploy' )
              string( name:'r1' defaultvalue:'1',description:'choose the replicas?' )
              string( name:'img' defaultvalue:'jboss:latest',description:'choose the replicas?' )
              string( name:'myservices' defaultvalue:'mydevservices',description:'choose the replicas?' )
              string( name:'ms' defaultvalue:'qa',description:'choose the replicas?' )
-
              choice( name:'image name', choices:[script to list the images], description:'pip' )
       }
       stages{
          stage('dev'){
              agent{ label'dockergroup' }
               when{
-                 environment name: 'DEPLOY_TO', value:'dev'
+                 environment name: 'enironment', value:'dev'
                  }
               steps{
-                    sh  'echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
-                    sh  ' compose.sh >> sh.sh '
+                    sh  ' git clone https://github.com/rama7674/compose '
+                    sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' cat compose.sh >> sh.sh '
+                    sh  ' chmod +x sh.sh '
+                    sh  ' ./sh.sh '
+                    sh  ' docker stack -c docker-compose_ft.yml mystack '
+              }
+         }
+         stage('qa'){
+             agent{ label'dockergroup' }
+              when{
+                 environment name: 'enironment', value:'qa'
+                 }
+              steps{
+                    sh  ' git clone https://github.com/rama7674/compose '
+                    sh  ' echo "myservices=$myservice  img=$img  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' cat compose.sh >> sh.sh '
                     sh  ' chmod +x sh.sh '
                     sh  ' ./sh.sh '
                     sh  ' docker stack -c docker-compose_ft.yml mystack '
