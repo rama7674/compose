@@ -19,6 +19,7 @@ pipeline{
     
               steps{
                     sh  ' y=$((./a.sh)'
+                    sh  ' echo $y ' 
                     sh  ' echo "myservices=$myservices  img=$y  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  'chmod +x script.sh '
