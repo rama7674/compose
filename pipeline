@@ -18,6 +18,7 @@ pipeline{
               
     
               steps{
+                    sh  ' apt-get install -y jq '
                     sh  ' y=$((./a.sh)'
                     sh  ' echo $y ' 
                     sh  ' echo "myservices=$myservices  img=$y  r1=$r1  ms=$ms" >> sh.sh'
