@@ -3,7 +3,7 @@ pipeline{
       parameters{
              choice( name:'environment', choices:['dev','qa'], description:'pick a env to deploy' )
              string( name:'r1', defaultValue:'1' , description: '')
-             choice( name:'img', choices:'$y', description: 'pick any images' )
+             choice( name:'img', choices:'$img', description: 'pick any images' )
              string( name:'myservices', defaultValue:'mydevservices' , description: '')
              choice( name:'ms', choices:['dev','qa'], description: 'pick any ' )
              
@@ -21,7 +21,8 @@ pipeline{
                     sh  ' apt-get install -y jq '
                     sh  ' y=$((./a.sh)'
                     sh  ' echo $y ' 
-                    sh  ' echo "myservices=$myservices  img=$y  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' sed s/$y/img/ pipeline '
+                    sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  'chmod +x script.sh '
                     sh  ' ./script.sh '
