@@ -3,7 +3,7 @@ pipeline{
       parameters{
              choice( name:'environment', choices:['dev','qa'], description:'pick a env to deploy' )
              string( name:'r1', defaultValue:'1' , description: '')
-             string( name:'img', defaultValue:'y', description: '' )
+             choice( name:'img', choices:'$y', description: 'pick any images' )
              string( name:'myservices', defaultValue:'mydevservices' , description: '')
              choice( name:'ms', choices:['dev','qa'], description: 'pick any ' )
              
@@ -18,8 +18,8 @@ pipeline{
               
     
               steps{
-                    
-                    sh  ' echo "myservices=$myservices  img=$img  r1=$r1  ms=$ms" >> sh.sh'
+                    sh  ' y=$((./a.sh)'
+                    sh  ' echo "myservices=$myservices  img=$y  r1=$r1  ms=$ms" >> sh.sh'
                     sh  ' cat compose.sh >> sh.sh '
                     sh  'chmod +x script.sh '
                     sh  ' ./script.sh '
