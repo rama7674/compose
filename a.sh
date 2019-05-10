@@ -25,7 +25,7 @@ do
   for j in ${IMAGE_TAGS}
   do
     # add each tag to list
-    FULL_IMAGE_LIST="${FULL_IMAGE_LIST} ${i}:${j}"
+    FULL_IMAGE_LIST="${FULL_IMAGE_LIST} ${UNAME}/${i}:${j},"
   done
 done
 
