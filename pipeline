@@ -18,7 +18,7 @@ pipeline{
               
     
               steps{
-                    sh  ' apt-get install -y jq '
+                    
                     sh  ' y=$((./a.sh)'
                     sh  ' echo $y ' 
                     sh  ' sed s/$y/img/ pipeline '
